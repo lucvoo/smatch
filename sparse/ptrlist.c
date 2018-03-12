@@ -18,6 +18,7 @@
 
 __DECLARE_ALLOCATOR(struct ptr_list, ptrlist);
 __ALLOCATOR(struct ptr_list, "ptr list", ptrlist);
+__ALLOCATOR(struct ptr_list, "rl ptr list", rl_ptrlist);
 
 ///
 // get the size of a ptrlist
@@ -245,6 +246,7 @@ void split_ptr_list_head(struct ptr_list *head)
 //
 // :note: code must not use this function and should use
 //	:func:`add_ptr_list` instead.
+int rl_ptrlist_hack;
 void **__add_ptr_list(struct ptr_list **listp, void *ptr)
 {
 	struct ptr_list *list = *listp;
@@ -253,7 +255,12 @@ void **__add_ptr_list(struct ptr_list **listp, void *ptr)
 	int nr;
 
 	if (!list || (nr = (last = list->prev)->nr) >= LIST_NODE_NR) {
-		struct ptr_list *newlist = __alloc_ptrlist(0);
+		struct ptr_list *newlist;
+
+		if (rl_ptrlist_hack)
+			newlist = __alloc_rl_ptrlist(0);
+		else
+			newlist = __alloc_ptrlist(0);
 		if (!list) {
 			newlist->next = newlist;
 			newlist->prev = newlist;
