@@ -886,6 +886,10 @@ int get_user_rl_spammy(struct expression *expr, struct range_list **rl);
 int is_user_rl(struct expression *expr);
 int get_user_rl_var_sym(const char *name, struct symbol *sym, struct range_list **rl);
 
+/* macro_table.c */
+void store_macro_pos(struct token *token);
+char *get_macro_name(struct position pos);
+
 /* check_locking.c */
 void print_held_locks();
 
