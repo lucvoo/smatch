@@ -48,6 +48,7 @@
 
 int verbose, optimize_level, optimize_size, preprocessing;
 int die_if_error = 0;
+int parse_error;
 int has_error = 0;
 
 #ifndef __GNUC__
@@ -155,6 +156,7 @@ void info(struct position pos, const char * fmt, ...)
 static void do_error(struct position pos, const char * fmt, va_list args)
 {
 	static int errors = 0;
+	parse_error = 1;
         die_if_error = 1;
 	show_info = 1;
 	/* Shut up warnings if position is bad_token.pos */

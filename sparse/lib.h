@@ -45,6 +45,7 @@
 
 extern int verbose, optimize_level, optimize_size, preprocessing;
 extern int die_if_error;
+extern int parse_error;
 extern int repeat_phase;
 extern int gcc_major, gcc_minor, gcc_patchlevel;
 
