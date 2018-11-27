@@ -839,6 +839,12 @@ void open_smatch_db(void);
 int open_data_file(const char *filename);
 struct token *get_tokens_file(const char *filename);
 
+/* token_store.c */
+void store_all_tokens(struct token *token);
+struct token *first_token_from_line(struct position pos);
+struct token *pos_get_token(struct position pos);
+char *pos_ident(struct position pos);
+
 /* smatch.c */
 extern char *option_debug_check;
 extern char *option_project_str;
