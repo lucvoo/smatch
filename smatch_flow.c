@@ -1539,20 +1539,20 @@ static void split_function(struct symbol *sym)
 
 static void save_flow_state(void)
 {
-	__add_ptr_list(&backup, INT_PTR(loop_num << 2), 0);
-	__add_ptr_list(&backup, INT_PTR(loop_count << 2), 0);
-	__add_ptr_list(&backup, INT_PTR(final_pass << 2), 0);
+	__add_ptr_list(&backup, INT_PTR(loop_num << 2));
+	__add_ptr_list(&backup, INT_PTR(loop_count << 2));
+	__add_ptr_list(&backup, INT_PTR(final_pass << 2));
 
-	__add_ptr_list(&backup, big_statement_stack, 0);
-	__add_ptr_list(&backup, big_expression_stack, 0);
-	__add_ptr_list(&backup, big_condition_stack, 0);
-	__add_ptr_list(&backup, switch_expr_stack, 0);
+	__add_ptr_list(&backup, big_statement_stack);
+	__add_ptr_list(&backup, big_expression_stack);
+	__add_ptr_list(&backup, big_condition_stack);
+	__add_ptr_list(&backup, switch_expr_stack);
 
-	__add_ptr_list(&backup, cur_func_sym, 0);
+	__add_ptr_list(&backup, cur_func_sym);
 
-	__add_ptr_list(&backup, __prev_stmt, 0);
-	__add_ptr_list(&backup, __cur_stmt, 0);
-	__add_ptr_list(&backup, __next_stmt, 0);
+	__add_ptr_list(&backup, __prev_stmt);
+	__add_ptr_list(&backup, __cur_stmt);
+	__add_ptr_list(&backup, __next_stmt);
 
 }
 
